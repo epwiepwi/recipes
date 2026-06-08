@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ============================================
-  📝 수정 가이드
-  ============================================
-  1. 후킹 문구: <h1 class="hook">...</h1> 안의 텍스트
-  2. <script> 안에서:
-     - DISPLAY_TEXT: 모달에 보이는 텍스트 (예: '4번라인 4번제품')
-     - JUMP_KEYWORD: 쿠팡에서 점프할 키워드 (예: '4번라인')
-     - COUPANG_BASE_URL: 본인 파트너스 ID로
-  ============================================
--->
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
@@ -391,11 +380,9 @@
   </div>
 
   <script>
-    // ============ 수정할 곳 ============
-    const DISPLAY_TEXT = '4번라인 4번제품';  // 모달에 보이는 텍스트
-    const JUMP_KEYWORD = '4번라인';            // 쿠팡에서 자동 점프할 키워드
+    const DISPLAY_TEXT = '4번라인 4번제품';
+    const JUMP_KEYWORD = '4번라인';
     const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
-    // ===================================
 
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('keywordDisplay').textContent = DISPLAY_TEXT;
