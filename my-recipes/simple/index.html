@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--
+  ============================================
+  📝 수정 가이드
+  ============================================
+  1. 후킹 문구: <h1 class="hook">...</h1> 안의 텍스트
+  2. <script> 안에서:
+     - DISPLAY_TEXT: 모달에 보이는 텍스트 (예: '4번라인 4번제품')
+     - JUMP_KEYWORD: 쿠팡에서 점프할 키워드 (예: '4번라인')
+     - COUPANG_BASE_URL: 본인 파트너스 ID로
+  ============================================
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>샤넬이 샤넬했다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+  
+  :root {
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --ink-light: #a5a5aa;
+    --accent: #ff6b9d;
+    --accent-soft: #fff0f5;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #ffffff;
+    color: var(--ink);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-bottom: 0;
+    letter-spacing: -0.005em;
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .hook {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding: 0 4px;
+  }
+
+  .tap-hint {
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .tap-hint .arrow {
+    display: inline-block;
+    animation: tap 1.5s ease-in-out infinite;
+  }
+  @keyframes tap {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+
+  .main-cta {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    border-radius: 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    letter-spacing: -0.015em;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    width: 100%;
+  }
+  .main-cta:active {
+    transform: scale(0.97);
+  }
+
+  .footer {
+    margin-top: auto;
+    padding-top: 30px;
+    text-align: center;
+  }
+  .footer-note {
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .footer-note strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .footer-text {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  .fade-in {
+    animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .fade-in:nth-child(2) { animation-delay: 0.08s; }
+  .fade-in:nth-child(3) { animation-delay: 0.16s; }
+  .fade-in:nth-child(4) { animation-delay: 0.24s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 토스트 */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* 모달 */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  
+  .modal {
+    background: #fff;
+    border-radius: 24px;
+    max-width: 360px;
+    width: 100%;
+    padding: 32px 24px 24px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.88) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+    display: inline-block;
+    animation: bounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  }
+  @keyframes bounce {
+    from { opacity: 0; transform: scale(0.3); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .modal-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .modal-locator {
+    background: var(--accent-soft);
+    border: 1.5px dashed #ffc0d4;
+    border-radius: 14px;
+    padding: 16px 14px;
+    margin-bottom: 18px;
+  }
+  .modal-locator-label {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .modal-locator-value {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    word-break: keep-all;
+  }
+  .how-to {
+    background: #fafaf7;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .how-to-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .how-to-step strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .how-num {
+    background: var(--accent);
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--ink);
+    color: #fff;
+    padding: 15px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: -0.01em;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 8px;
+  }
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="disclaimer fade-in">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <div class="main-content">
+      <!-- 후킹 문구 -->
+      <h1 class="hook fade-in">
+        샤넬이<br>
+        샤넬했다... 하투하투 🤍
+      </h1>
+
+      <!-- 안내 -->
+      <p class="tap-hint fade-in">
+        아래 버튼 누르면 안내가 떠요 <span class="arrow">→</span>
+      </p>
+
+      <!-- 메인 CTA - 모달 열기 -->
+      <button type="button" class="main-cta fade-in" onclick="openModal()">
+        쿠팡에서 보기 <span>→</span>
+      </button>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+      <p class="footer-note">
+        💌 인스타 DM으로 바로 안내가 어려워<br>
+        <strong>중간 페이지를 만들었어요</strong>
+      </p>
+      <p class="footer-text">
+        쿠팡 파트너스 활동의 일환으로,<br>
+        이에 따른 일정액의 수수료를 제공받습니다
+      </p>
+    </div>
+
+  </div>
+
+  <!-- 모달 -->
+  <div class="modal-overlay" id="productModal" onclick="if(event.target.id==='productModal') closeModal()">
+    <div class="modal">
+      <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon">💄</div>
+      <div class="modal-title">바로 이동합니다!</div>
+      <p class="modal-text">아래 버튼을 누르면<br>쿠팡 페이지로 이동돼요</p>
+
+      <div class="modal-locator">
+        <div class="modal-locator-label">📍 제품 위치</div>
+        <div class="modal-locator-value" id="keywordDisplay">4번라인 4번제품</div>
+      </div>
+
+      <a href="#"
+         class="modal-cta"
+         id="goCoupangBtn"
+         target="_blank"
+         rel="noopener noreferrer">
+        쿠팡에서 보기 →
+      </a>
+      <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
+    </div>
+  </div>
+
+  <script>
+    // ============ 수정할 곳 ============
+    const DISPLAY_TEXT = '4번라인 4번제품';  // 모달에 보이는 텍스트
+    const JUMP_KEYWORD = '4번라인';            // 쿠팡에서 자동 점프할 키워드
+    const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+    // ===================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('keywordDisplay').textContent = DISPLAY_TEXT;
+      
+      const encodedKeyword = encodeURIComponent(JUMP_KEYWORD);
+      document.getElementById('goCoupangBtn').href = 
+        COUPANG_BASE_URL + '#:~:text=' + encodedKeyword;
+    });
+
+    function openModal() {
+      document.getElementById('productModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      setTimeout(() => closeModal(), 100);
+    });
+  </script>
+
+</body>
+</html>

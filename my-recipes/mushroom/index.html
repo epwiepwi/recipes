@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<!--
+  ============================================
+  📝 수정 가이드
+  ============================================
+  시즈닝 1/2/3 링크는 HTML에서 직접 수정:
+  href="https://link.coupang.com/a/xxxx" 부분
+  ============================================
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>새송이버섯구이 레시피</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --card: #ffffff;
+    --ink: #2b2a26;
+    --ink-soft: #6b6a65;
+    --ink-light: #999791;
+    --accent: #c08552;
+    --accent-soft: #f5ebe0;
+    --secret: #ff8c42;
+    --secret-soft: #fff1e2;
+    --line: #ececea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .footer-top {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+    padding: 4px 0;
+  }
+
+  /* 헤더 */
+  .header {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    display: inline-block;
+    background: var(--accent-soft);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  /* 히어로 이미지 - 가로 길게 */
+  .hero-image {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 14px 0 16px;
+    box-shadow: 0 4px 18px rgba(120, 80, 40, 0.12);
+    aspect-ratio: 16 / 9;
+    background: #f0eee8;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 카드 */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .card-title .icon { font-size: 17px; }
+
+  /* 줄글 본문 */
+  .recipe-text {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.8;
+    letter-spacing: -0.01em;
+  }
+  .recipe-text p {
+    margin-bottom: 14px;
+  }
+  .recipe-text p:last-child { margin-bottom: 0; }
+  .recipe-text strong {
+    background: linear-gradient(transparent 55%, #f0d8b8 55%);
+    padding: 0 4px;
+    font-weight: 700;
+  }
+
+  /* 시즈닝 옵션 박스 */
+  .seasoning-card {
+    background: #fff5e6;
+    border: 1px solid #f0d8b8;
+  }
+  .seasoning-card .card-title { color: #8b5410; }
+  .seasoning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .seasoning-item {
+    background: #fff;
+    border: 1.5px solid #f0d8b8;
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+  }
+  .seasoning-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(192, 133, 82, 0.18);
+    border-color: var(--secret);
+  }
+  .seasoning-num {
+    background: var(--secret);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .seasoning-info {
+    flex: 1;
+  }
+  .seasoning-info .label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .seasoning-info .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .seasoning-info .desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .seasoning-item .arrow {
+    color: var(--secret);
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* 팁 */
+  .tip-card {
+    background: #fff8e6;
+    border: 1px solid #f4d97a;
+  }
+  .tip-card .card-title { color: #8b6914; }
+  .tip-row {
+    padding: 6px 0;
+    font-size: 13.5px;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.55;
+    border-bottom: 1px dashed #f4d97a;
+  }
+  .tip-row:last-child { border-bottom: none; }
+  .tip-row .badge {
+    background: var(--secret);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tip-row .badge.b1 { background: #6b9b76; }
+  .tip-row .badge.b2 { background: #c08552; }
+  .tip-row .badge.b3 { background: #d4734a; }
+
+  /* 공유 */
+  .share-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .share-desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1.5px solid #e0c8a8;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: -0.01em;
+  }
+  .share-btn:hover {
+    transform: translateY(-1px);
+    background: #e8dac4;
+  }
+  .share-btn.kakao {
+    background: #fee500;
+    color: #3a1d1d;
+    border-color: #f0d800;
+  }
+  .share-btn.copy {
+    background: #f3f3f0;
+    color: var(--ink);
+    border-color: #e0e0dc;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 14px;
+    background: #fff5e6;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .footer-note strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* 모달 */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  
+  .modal {
+    background: #fff;
+    border-radius: 22px;
+    max-width: 340px;
+    width: 100%;
+    padding: 32px 22px 22px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon {
+    font-size: 40px;
+    margin-bottom: 6px;
+    display: inline-block;
+    animation: bounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  }
+  @keyframes bounce {
+    from { opacity: 0; transform: scale(0.3); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .modal-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .modal-locator {
+    background: var(--secret-soft);
+    border: 1.5px dashed #ffc9a0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-locator-label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .modal-locator-value {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: -0.01em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="footer-top">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <div class="eyebrow">RECIPE</div>
+      <h1>🍄 새송이버섯구이</h1>
+      <p class="subtitle">에어프라이어로 간단하게 🤍</p>
+    </header>
+
+    <!-- 히어로 이미지 -->
+    <div class="hero-image">
+      <img src="mushroom-hero.png" alt="새송이버섯구이" />
+    </div>
+
+    <!-- 만드는 법 -->
+    <div class="card">
+      <div class="card-title"><span class="icon">👩🏻‍🍳</span> 만드는 법</div>
+      <div class="recipe-text">
+        <p>새송이버섯은 먹을 만큼 준비해주시고<br>
+        <strong>겉면에 올리브유</strong>를 넉넉히 발라주세요 🍄</p>
+
+        <p>그다음 시즈닝 1번 / 시즈닝 2번+설탕 1/3스푼 / 시즈닝 3번 중에서<br>
+        <strong>취향껏 골라 총 3큰술</strong> 정도 버섯에 넉넉하게 묻혀주시면 돼요 ✨</p>
+
+        <p>남은 오일은 한 번 더 가볍게 발라주시고<br>
+        종이호일 깐 에어프라이어에 넣어<br>
+        <strong>170도에서 15~20분</strong> 구워주세요<br>
+        중간에 한 번 뒤집어주시면 더 맛있어요 :)</p>
+
+        <p>겉은 노릇하고 속은 촉촉해서<br>
+        간식처럼 먹기도 좋고 안주로도 잘 어울려요 🤍</p>
+      </div>
+    </div>
+
+    <!-- 시즈닝 선택 -->
+    <div class="card seasoning-card">
+      <div class="card-title"><span class="icon">🧂</span> 시즈닝 골라보세요</div>
+      <div class="seasoning-list">
+        <a href="https://link.coupang.com/a/epII2MZdM4" class="seasoning-item" target="_blank" rel="noopener noreferrer">
+          <span class="seasoning-num">1</span>
+          <div class="seasoning-info">
+            <div class="label">SEASONING 01</div>
+            <div class="title">시즈닝 1번</div>
+            <div class="desc">담백하게 즐기고 싶을 때</div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+
+        <a href="https://link.coupang.com/a/epIrgNk57Y" class="seasoning-item" target="_blank" rel="noopener noreferrer">
+          <span class="seasoning-num">2</span>
+          <div class="seasoning-info">
+            <div class="label">SEASONING 02</div>
+            <div class="title">시즈닝 2번 + 설탕</div>
+            <div class="desc">달콤짭짤한 맛 좋아하면</div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+
+        <a href="https://link.coupang.com/a/epIsP6QrDg" class="seasoning-item" target="_blank" rel="noopener noreferrer">
+          <span class="seasoning-num">3</span>
+          <div class="seasoning-info">
+            <div class="label">SEASONING 03</div>
+            <div class="title">시즈닝 3번</div>
+            <div class="desc">감칠맛 진한 게 좋다면</div>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 팁 -->
+    <div class="card tip-card">
+      <div class="card-title"><span class="icon">📌</span> Tip</div>
+      <div class="tip-row">
+        <span class="badge b1">1</span>
+        <span>담백하게 드시고 싶으면 <strong>시즈닝 1번</strong></span>
+      </div>
+      <div class="tip-row">
+        <span class="badge b2">2</span>
+        <span>달콤짭짤한 맛 좋아하시면 <strong>시즈닝 2번 + 설탕</strong></span>
+      </div>
+      <div class="tip-row">
+        <span class="badge b3">3</span>
+        <span>감칠맛 진하게 원하시면 <strong>시즈닝 3번</strong></span>
+      </div>
+    </div>
+
+    <!-- 공유 -->
+    <div class="share-card">
+      <div class="share-title">🍄 이 레시피 공유하기</div>
+      <p class="share-desc">친구들에게도 알려주세요!</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn kakao" onclick="shareKakao()">
+          💬 카톡
+        </button>
+        <button type="button" class="share-btn" onclick="shareNative()">
+          📤 공유
+        </button>
+        <button type="button" class="share-btn copy" onclick="copyLink()">
+          🔗 링크복사
+        </button>
+      </div>
+    </div>
+
+    <!-- 안내 노트 -->
+    <p class="footer-note">
+      💌 인스타 DM으로 바로 안내가 어려워<br>
+      <strong>중간 페이지를 만들었어요</strong>
+    </p>
+
+  </div>
+
+  <script>
+    // 공유
+    const shareData = {
+      title: '🍄 새송이버섯구이 레시피',
+      text: '에어프라이어로 간단하게 만드는 새송이버섯구이!',
+      url: window.location.href
+    };
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(textArea);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (e) {}
+      } else {
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>레시피 모음</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --card: #ffffff;
+    --ink: #2b2a26;
+    --ink-soft: #6b6a65;
+    --ink-light: #999791;
+    --accent: #ff8c42;
+    --line: #ececea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 32px 18px 60px;
+  }
+
+  /* 헤더 */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* 레시피 그리드 */
+  .recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .recipe-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px 14px;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .recipe-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(120, 80, 40, 0.1);
+  }
+  .recipe-emoji {
+    font-size: 36px;
+    margin-bottom: 4px;
+  }
+  .recipe-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+  .recipe-sub {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* 푸터 */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="eyebrow">RECIPES</div>
+      <h1>🍳 레시피 모음</h1>
+      <p class="subtitle">간단하고 맛있는 한 그릇 🤍</p>
+    </header>
+
+    <div class="recipes">
+
+      <a href="eggplant/" class="recipe-card">
+        <span class="recipe-emoji">🍆</span>
+        <div class="recipe-title">가지탕수</div>
+        <div class="recipe-sub">바삭+새콤달콤</div>
+      </a>
+
+      <a href="mushroom/" class="recipe-card">
+        <span class="recipe-emoji">🍄</span>
+        <div class="recipe-title">새송이버섯구이</div>
+        <div class="recipe-sub">에어프라이어</div>
+      </a>
+
+      <a href="banana/" class="recipe-card">
+        <span class="recipe-emoji">🍌</span>
+        <div class="recipe-title">바나나요거트</div>
+        <div class="recipe-sub">진짜 간단한 한 그릇</div>
+      </a>
+
+      <a href="cucumber/" class="recipe-card">
+        <span class="recipe-emoji">🥒</span>
+        <div class="recipe-title">오이무침</div>
+        <div class="recipe-sub">쉐킷쉐킷</div>
+      </a>
+
+      <a href="cabbage/" class="recipe-card">
+        <span class="recipe-emoji">🥗</span>
+        <div class="recipe-title">양배추비빔</div>
+        <div class="recipe-sub">안 붓는 비법</div>
+      </a>
+
+      <a href="gimbap/" class="recipe-card">
+        <span class="recipe-emoji">🍙</span>
+        <div class="recipe-title">김밥</div>
+        <div class="recipe-sub">맛 확 달라지는</div>
+      </a>
+
+      <a href="passion/" class="recipe-card">
+        <span class="recipe-emoji">🍋</span>
+        <div class="recipe-title">패션후르츠 레몬차</div>
+        <div class="recipe-sub">상큼달콤 여름음료</div>
+      </a>
+
+      <a href="morning/" class="recipe-card">
+        <span class="recipe-emoji">🥛</span>
+        <div class="recipe-title">아침 한 잔</div>
+        <div class="recipe-sub">데일리 루틴</div>
+      </a>
+
+      <a href="simple/" class="recipe-card">
+        <span class="recipe-emoji">💄</span>
+        <div class="recipe-title">샤넬 립스틱</div>
+        <div class="recipe-sub">하투하투</div>
+      </a>
+
+    </div>
+
+    <p class="footer">
+      쿠팡 파트너스 활동의 일환으로<br>
+      일정 수수료를 제공받습니다
+    </p>
+
+  </div>
+</body>
+</html>

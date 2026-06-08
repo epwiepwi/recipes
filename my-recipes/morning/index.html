@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<!--
+  ============================================
+  📝 수정 가이드
+  ============================================
+  1. 쿠팡 링크 바꾸기: "dkanrjsk" 를 본인 파트너스 ID로
+  2. 검색 키워드 바꾸기: <script> 안의 SEARCH_KEYWORD 값만 수정
+     (한글, 띄어쓰기 다 OK - 자동으로 URL 인코딩됨)
+     예) const SEARCH_KEYWORD = '비밀재료';
+  ============================================
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가벼운 아침 한 잔</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fffdf5;
+    --card: #ffffff;
+    --ink: #2b2a26;
+    --ink-soft: #6b6a65;
+    --ink-light: #999791;
+    --accent: #e8b932;
+    --accent-soft: #fff5d4;
+    --secret: #ff8c42;
+    --secret-soft: #fff1e2;
+    --line: #ececea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .footer-top {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+    padding: 4px 0;
+  }
+
+  /* 헤더 */
+  .header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    display: inline-block;
+    background: var(--accent-soft);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  /* 카드 */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .card-title .icon { font-size: 17px; }
+
+  /* 준비물 카드 */
+  .prep-card {
+    background: var(--accent-soft);
+    border: 1px solid #f0d97a;
+  }
+  .prep-card .card-title { color: #8b6914; }
+  .prep-list {
+    list-style: none;
+  }
+  .prep-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14.5px;
+    border-bottom: 1px dashed #f0d97a;
+  }
+  .prep-list li:last-child { border-bottom: none; }
+  .prep-list li .name {
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .prep-list li .amount {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .prep-list li.highlight {
+    background: #ffd89a;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 6px 0 2px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.15s;
+    border-bottom: none;
+  }
+  .prep-list li.highlight:hover { transform: scale(1.02); }
+  .prep-list li.highlight .name,
+  .prep-list li.highlight .amount {
+    color: #8b4514;
+    font-weight: 700;
+  }
+
+  /* 순서 - 컴팩트 */
+  .step-list {
+    list-style: none;
+  }
+  .step-list li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14.5px;
+    color: var(--ink);
+    align-items: flex-start;
+    border-bottom: 1px dashed var(--line);
+    line-height: 1.6;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    background: var(--accent-soft);
+    color: #b88800;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content {
+    flex: 1;
+  }
+  .step-content strong {
+    background: linear-gradient(transparent 55%, #ffe48a 55%);
+    padding: 0 4px;
+    font-weight: 700;
+  }
+
+  /* 코멘트 박스 */
+  .comment-card {
+    background: #fff4d6;
+    border: 1px solid #f4d97a;
+    text-align: center;
+  }
+  .comment-card p {
+    font-size: 14px;
+    color: #8b6914;
+    font-weight: 500;
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .cta-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin: 14px 0 10px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .cta-title .accent { color: #ffc94d; }
+  .cta-btn {
+    background: var(--secret);
+    color: #fff;
+    border: none;
+    padding: 13px 26px;
+    border-radius: 999px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(255, 140, 66, 0.35);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 140, 66, 0.45);
+  }
+
+  /* 공유 */
+  .share-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .share-desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    background: var(--accent-soft);
+    color: #b88800;
+    border: 1.5px solid #f0d97a;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: -0.01em;
+  }
+  .share-btn:hover {
+    transform: translateY(-1px);
+    background: #fceca0;
+  }
+  .share-btn.kakao {
+    background: #fee500;
+    color: #3a1d1d;
+    border-color: #f0d800;
+  }
+  .share-btn.kakao:hover { background: #ffe900; }
+  .share-btn.copy {
+    background: #f3f3f0;
+    color: var(--ink);
+    border-color: #e0e0dc;
+  }
+
+  /* 토스트 */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* 모달 */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 340px;
+    width: 100%;
+    padding: 28px 22px 22px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon { font-size: 36px; margin-bottom: 6px; }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .modal-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .modal-locator {
+    background: var(--secret-soft);
+    border: 1.5px dashed #ffc9a0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-locator-label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .modal-locator-value {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  /* 안내 단계 */
+  .how-to {
+    background: #fafaf7;
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .how-to-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .how-to-step strong {
+    color: var(--secret);
+    font-weight: 700;
+  }
+  .how-num {
+    background: var(--secret);
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--secret);
+    color: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="footer-top">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <div class="eyebrow">DAILY ROUTINE</div>
+      <h1>🥛 장 편한 사람들의<br>아침 한 잔 💛</h1>
+      <p class="subtitle">30초만 갈면 끝나는 데일리 루틴</p>
+    </header>
+
+    <!-- 준비물 -->
+    <div class="card prep-card">
+      <div class="card-title"><span class="icon">🛒</span> 준비물</div>
+      <ul class="prep-list">
+        <li>
+          <span class="name">🍌 바나나</span>
+          <span class="amount">1개</span>
+        </li>
+        <li>
+          <span class="name">🥛 플레인 요거트</span>
+          <span class="amount">1컵</span>
+        </li>
+        <li>
+          <span class="name">🍯 꿀</span>
+          <span class="amount">기호에 따라</span>
+        </li>
+        <li class="highlight" onclick="openModal()">
+          <span class="name">✨ 비밀재료 ✨</span>
+          <span class="amount">1~2스푼 →</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 만드는 법 -->
+    <div class="card">
+      <div class="card-title"><span class="icon">👩🏻‍🍳</span> 만드는 법</div>
+      <ul class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <div class="step-content">
+            준비물 다 넣고 <strong>30초만</strong> 갈아주세요
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div class="step-content">
+            끝! 🫶🏻 진짜 이게 다예요
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 코멘트 -->
+    <div class="card comment-card">
+      <p>아침에 가볍게 한 잔 챙기기 좋아요 🥺💕<br>
+      향이 부담스럽지 않아서<br>
+      <strong>꾸준히 챙기기</strong> 좋더라구요</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <div class="cta-title"><span class="accent">비밀재료</span> 확인하기 💛</div>
+      <button type="button" class="cta-btn" onclick="openModal()">
+        쿠팡에서 보기 →
+      </button>
+    </div>
+
+    <!-- 공유 -->
+    <div class="share-card">
+      <div class="share-title">💛 이 레시피 공유하기</div>
+      <p class="share-desc">친구들에게도 알려주세요!</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn kakao" onclick="shareKakao()">
+          💬 카톡
+        </button>
+        <button type="button" class="share-btn" onclick="shareNative()">
+          📤 공유
+        </button>
+        <button type="button" class="share-btn copy" onclick="copyLink()">
+          🔗 링크복사
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 토스트 -->
+  <div class="toast" id="toast">링크가 복사됐어요!</div>
+
+  <!-- 모달 -->
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon">✨</div>
+      <div class="modal-title">비밀재료는 여기!</div>
+      <p class="modal-text">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇</p>
+
+      <div class="modal-locator">
+        <div class="modal-locator-label">📍 검색 키워드</div>
+        <div class="modal-locator-value">이계호 교수개발</div>
+      </div>
+
+      <div class="how-to">
+        <div class="how-to-step">
+          <span class="how-num">1</span>
+          <span>아래 버튼 누르면 쿠팡으로 이동돼요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">2</span>
+          <span>키워드는 <strong>자동으로 복사</strong>돼있어요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">3</span>
+          <span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span>
+        </div>
+      </div>
+
+      <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=%EC%9D%B4%EA%B3%84%ED%98%B8%20%EA%B5%90%EC%88%98%EA%B0%9C%EB%B0%9C"
+         class="modal-cta"
+         id="goCoupangBtn"
+         target="_blank"
+         rel="noopener noreferrer">
+        키워드 복사하고 쿠팡 가기 →
+      </a>
+      <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // 검색 키워드 (한 곳에서만 수정하면 됨!)
+    const SEARCH_KEYWORD = '이계호 교수개발';
+    const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+
+    // 페이지 로드 시 모달의 키워드/링크 자동 세팅
+    document.addEventListener('DOMContentLoaded', function() {
+      // 모달에 보이는 키워드 텍스트 업데이트
+      const keywordDisplay = document.querySelector('.modal-locator-value');
+      if (keywordDisplay) keywordDisplay.textContent = SEARCH_KEYWORD;
+
+      // 쿠팡 링크 동적 생성 (한글/띄어쓰기 자동 인코딩)
+      const goCoupangBtn = document.getElementById('goCoupangBtn');
+      if (goCoupangBtn) {
+        const encodedKeyword = encodeURIComponent(SEARCH_KEYWORD);
+        goCoupangBtn.href = COUPANG_BASE_URL + '#:~:text=' + encodedKeyword;
+      }
+    });
+
+    // 쿠팡 버튼 클릭 시 키워드 자동 복사
+    document.getElementById('goCoupangBtn').addEventListener('click', function(e) {
+      copyKeyword(SEARCH_KEYWORD);
+      setTimeout(() => closeModal(), 100);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(() => {
+          showToast('✨ "' + keyword + '" 복사됨! 쿠팡에서 붙여넣기 하세요');
+        }).catch(() => fallbackCopyText(keyword));
+      } else {
+        fallbackCopyText(keyword);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('✨ "' + text + '" 복사됨! 쿠팡에서 붙여넣기 하세요');
+      } catch (e) {}
+      document.body.removeChild(textArea);
+    }
+
+    // 공유
+    const shareData = {
+      title: '🥛 장 편한 사람들의 아침 한 잔',
+      text: '30초만 갈면 끝나는 데일리 한 잔 레시피',
+      url: window.location.href
+    };
+
+    function showToast(msg, duration) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration || 2500);
+    }
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('🔗 링크가 복사됐어요!');
+        }).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('🔗 링크가 복사됐어요!');
+      } catch (e) {
+        showToast('복사 실패. 직접 복사해주세요');
+      }
+      document.body.removeChild(textArea);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (e) {}
+      } else {
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+      }
+    }
+  </script>
+
+</body>
+</html>

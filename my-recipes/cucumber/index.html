@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<!--
+  ============================================
+  📝 수정 가이드
+  ============================================
+  1. 쿠팡 링크 바꾸기: "dkanrjsk" 를 본인 파트너스 ID로 (검색해서 모두 교체)
+  2. 점프 위치 바꾸기: "#:~:text=820" 에서 820을 원하는 번호/키워드로
+     예) #:~:text=821  또는  #:~:text=비법소스  또는  #:~:text=엄정화
+  3. 모달 안내 숫자: "4번 라인 8번째" 부분 숫자만 수정
+  ============================================
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오이 레시피</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7faf6;
+    --card: #ffffff;
+    --ink: #2b2a26;
+    --ink-soft: #6b6a65;
+    --ink-light: #999791;
+    --accent: #5ba85f;
+    --accent-soft: #e8f3e9;
+    --secret: #ff8c42;
+    --secret-soft: #fff1e2;
+    --line: #ececea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .footer-top {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+    padding: 4px 0;
+  }
+
+  /* 헤더 */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* 히어로 이미지 */
+  .hero-image {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 16px 0 12px;
+    box-shadow: 0 4px 20px rgba(60, 80, 50, 0.1);
+    aspect-ratio: 4 / 5;
+    background: #f0eee8;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 섹션 카드 */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .card-title .icon { font-size: 16px; }
+
+  /* 양념 박스 (secret 컬러) */
+  .secret-card {
+    background: var(--secret-soft);
+    border: 1.5px solid #ffd0a8;
+  }
+  .secret-card .card-title {
+    color: #c95f1c;
+  }
+  .secret-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed #ffd9b8;
+  }
+  .secret-row:last-child { border-bottom: none; }
+  .secret-row.highlight {
+    background: #ffd89a;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.15s;
+    border-bottom: none;
+  }
+  .secret-row.highlight:hover { transform: scale(1.02); }
+  .secret-row .name { color: var(--ink); }
+  .secret-row .amount {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .secret-row.highlight .name,
+  .secret-row.highlight .amount { color: #8b4514; }
+  .secret-tag {
+    background: #ff8c42;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
+
+  /* 순서 */
+  .step-list {
+    list-style: none;
+  }
+  .step-list li {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--ink);
+    align-items: flex-start;
+    border-bottom: 1px dashed var(--line);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    background: var(--accent-soft);
+    color: var(--accent);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content {
+    flex: 1;
+    line-height: 1.5;
+  }
+  .step-content strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .step-note {
+    color: var(--secret);
+    font-size: 12.5px;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .step-content .mark-green {
+    background: linear-gradient(transparent 55%, #c8e8c4 55%);
+    padding: 0 3px;
+    font-weight: 700;
+  }
+
+  /* 팁 */
+  .tip-card {
+    background: #fff8e6;
+    border: 1px solid #f4d97a;
+  }
+  .tip-card .card-title { color: #8b6914; }
+  .tip-card p {
+    font-size: 13.5px;
+    color: var(--ink);
+    padding: 3px 0;
+    line-height: 1.55;
+  }
+  .tip-card strong {
+    background: linear-gradient(transparent 55%, #ffe4a8 55%);
+    padding: 0 3px;
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .cta-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 20px 18px;
+    margin: 14px 0 10px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .cta-title .accent { color: #ff9d5c; }
+  .cta-btn {
+    background: var(--secret);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cta-btn:hover { transform: translateY(-1px); }
+
+  /* 공유 섹션 */
+  .share-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .share-desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1.5px solid #c8e0ca;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .share-btn:hover {
+    transform: translateY(-1px);
+    background: #d4ebd6;
+  }
+  .share-btn.kakao {
+    background: #fee500;
+    color: #3a1d1d;
+    border-color: #f0d800;
+  }
+  .share-btn.kakao:hover { background: #ffe900; }
+  .share-btn.copy {
+    background: #f3f3f0;
+    color: var(--ink);
+    border-color: #e0e0dc;
+  }
+  .share-btn.copy:hover { background: #ebebe6; }
+
+  /* 토스트 */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* 모달 */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 340px;
+    width: 100%;
+    padding: 28px 22px 22px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon { font-size: 36px; margin-bottom: 6px; }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .modal-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .modal-locator {
+    background: var(--secret-soft);
+    border: 1.5px dashed #ffc9a0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-locator-label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .modal-locator-value {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 21px;
+    color: var(--ink);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .modal-locator-value .num {
+    color: var(--secret);
+    font-size: 26px;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--secret);
+    color: #fff;
+    padding: 13px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="footer-top">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <div class="eyebrow">RECIPE</div>
+      <h1>🥒 오이 레시피 💚</h1>
+      <p class="subtitle">쉐킷쉐킷 흔들면 끝!</p>
+    </header>
+
+    <!-- 히어로 이미지 -->
+    <div class="hero-image">
+      <img src="cucumber-hero.jpg" alt="오이 마운자로 레시피" />
+    </div>
+
+    <!-- 순서 -->
+    <div class="card">
+      <div class="card-title"><span class="icon">👩‍🍳</span> 만드는 법</div>
+      <ul class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <div class="step-content"><strong>썰기</strong> — 오이 1개 얇게 썰기</div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <strong>절이기</strong> — 소금 뿌려서 <span class="mark-green">10분만</span> 절이기
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div class="step-content"><strong>짜기</strong> — 물기 꽉~ 짜주기</div>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <strong>흔들기</strong> — 오이 + 양념 비닐에 넣고 쉐킷쉐킷! ✨
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 양념 -->
+    <div class="card secret-card">
+      <div class="card-title"><span class="icon">🛒</span> 양념</div>
+      <div class="secret-row"><span class="name">참깨</span><span class="amount">한 줌</span></div>
+      <div class="secret-row"><span class="name">다진 마늘</span><span class="amount">1스푼</span></div>
+      <div class="secret-row"><span class="name">알룰로스</span><span class="amount">0.5스푼</span></div>
+      <div class="secret-row"><span class="name">후추</span><span class="amount">약간</span></div>
+      <div class="secret-row"><span class="name">참기름</span><span class="amount">약간</span></div>
+      <div class="secret-row highlight" onclick="openModal()">
+        <span class="name">💡 비법재료 <span class="secret-tag">필수</span></span>
+        <span class="amount">2스푼 →</span>
+      </div>
+    </div>
+
+    <!-- 팁 -->
+    <div class="card tip-card">
+      <div class="card-title"><span class="icon">💡</span> 포인트</div>
+      <p>· <strong>냉장 20분</strong> 했다가 먹기!</p>
+      <p>· <strong>참깨는 먹기 직전</strong>에 넣으면 더 맛있어요 🤍</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <div class="cta-title"><span class="accent">비법재료</span>가 핵심이에요!</div>
+      <button type="button" class="cta-btn" onclick="openModal()">
+        비법재료 확인하기 →
+      </button>
+    </div>
+
+    <!-- 공유 -->
+    <div class="share-card">
+      <div class="share-title">💚 이 레시피 공유하기</div>
+      <p class="share-desc">친구들에게도 알려주세요!</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn kakao" onclick="shareKakao()">
+          💬 카톡
+        </button>
+        <button type="button" class="share-btn" onclick="shareNative()">
+          📤 공유
+        </button>
+        <button type="button" class="share-btn copy" onclick="copyLink()">
+          🔗 링크복사
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 토스트 -->
+  <div class="toast" id="toast">링크가 복사됐어요!</div>
+
+  <!-- 모달 -->
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon">💡</div>
+      <div class="modal-title">비법재료는 여기!</div>
+      <p class="modal-text">아래 버튼을 누르면<br>제품 위치로 바로 이동해요 👇</p>
+      <div class="modal-locator">
+        <div class="modal-locator-label">📍 위치</div>
+        <div class="modal-locator-value">
+          <span class="num">4</span>번 라인의<br>
+          <span class="num">8</span>번째 제품
+        </div>
+      </div>
+      <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=820"
+         class="modal-cta"
+         target="_blank"
+         rel="noopener noreferrer"
+         onclick="closeModal()">
+        쿠팡에서 보러가기
+      </a>
+      <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // 공유 기능
+    const shareData = {
+      title: '🥒 오이 레시피 💚',
+      text: '쉐킷쉐킷 흔들면 끝나는 초간단 오이 레시피!',
+      url: window.location.href
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('🔗 링크가 복사됐어요!');
+        }).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('🔗 링크가 복사됐어요!');
+      } catch (e) {
+        showToast('복사 실패. 직접 복사해주세요');
+      }
+      document.body.removeChild(textArea);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (e) {
+          // 사용자가 취소한 경우 무시
+        }
+      } else {
+        // 공유 API 미지원 시 링크 복사로 대체
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      // 카카오톡 SDK 없이도 동작하도록 모바일에선 공유 API 사용, 데스크탑은 링크 복사
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+      }
+    }
+  </script>
+
+</body>
+</html>
