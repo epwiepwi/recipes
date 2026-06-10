@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>아보카도 샐러드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f7f0;
+    --card: #ffffff;
+    --ink: #1e2a1a;
+    --ink-soft: #5a6b52;
+    --ink-light: #8a9a80;
+    --accent: #6db34a;
+    --accent-soft: #e8f5e0;
+    --secret: #e85d3a;
+    --secret-soft: #fff0eb;
+    --line: #dfe8d8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .legal {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .hero {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 14px 0 16px;
+    box-shadow: 0 6px 24px rgba(50, 80, 30, 0.1);
+    aspect-ratio: 4 / 3;
+    background: #e4ead9;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card-head .ic { font-size: 17px; }
+
+  .ing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .ing-chip {
+    background: var(--accent-soft);
+    border: 1px solid #c8e0b8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a6b24;
+  }
+  .ing-chip .emoji { font-size: 20px; display: block; margin-bottom: 4px; }
+  .ing-secret {
+    grid-column: 1 / -1;
+    background: var(--secret);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.15s;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .ing-secret:hover { transform: scale(1.02); }
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+  }
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14.5px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    background: var(--accent);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .steps strong {
+    background: linear-gradient(transparent 55%, #d4f0b0 55%);
+    padding: 0 2px;
+  }
+
+  .vibe-card {
+    background: linear-gradient(135deg, #e8f5e0 0%, #f0fae8 100%);
+    border: 1px solid #c8e0b8;
+    text-align: center;
+  }
+  .vibe-card p {
+    font-size: 14.5px;
+    color: #3a6b24;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  .cta-box {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin: 14px 0 10px;
+    text-align: center;
+  }
+  .cta-msg {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .cta-msg .pop { color: #ff9a6c; }
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--secret);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s;
+  }
+  .cta-link:hover { transform: translateY(-1px); }
+
+  .share-box {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-box h3 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .share-box .desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .sbtn {
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1.5px solid;
+    text-decoration: none;
+  }
+  .sbtn:hover { transform: translateY(-1px); }
+  .sbtn.kakao { background: #fee500; color: #3a1d1d; border-color: #f0d800; }
+  .sbtn.native { background: var(--accent-soft); color: #3a6b24; border-color: #c8e0b8; }
+  .sbtn.copy { background: #f3f3f0; color: var(--ink); border-color: #e0e0dc; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="legal">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <span class="tag">3-MINUTE RECIPE</span>
+      <h1>hell yeah 아보카도 샐러드</h1>
+      <p class="sub">칼 들고 3분이면 끝나는 사기 레시피</p>
+    </header>
+
+    <div class="hero">
+      <img src="avocado-hero.png" alt="아보카도 샐러드" />
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="ic">+</span> 넣을 것들</div>
+      <div class="ing-grid">
+        <div class="ing-chip"><span class="emoji">🥑</span>아보카도 1개</div>
+        <div class="ing-chip"><span class="emoji">🧈</span>연두부 1개</div>
+        <div class="ing-chip"><span class="emoji">🌾</span>통깨 왕창</div>
+        <div class="ing-chip"><span class="emoji">🫗</span>들기름 or 참기름</div>
+        <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=397.%20고구마%20대신%20이거" class="ing-secret" target="_blank" rel="noopener noreferrer">
+          🔥 감칠맛 폭발하는 비밀재료 보기 →
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="ic">></span> 그래서 어떻게 하냐면</div>
+      <ol class="steps">
+        <li><strong>아보카도</strong> 반 갈라서 한 입 크기로 썰고</li>
+        <li><strong>연두부</strong>도 슥슥 잘라서 같이 담고</li>
+        <li><strong>비밀재료</strong> + 들기름 넉넉히 둘러주고</li>
+        <li><strong>통깨</strong> 미친듯이 뿌리면 그냥 완성임</li>
+      </ol>
+    </div>
+
+    <div class="card vibe-card">
+      <p>솔직히 이게 되나 싶었는데<br>한 번 먹고 매일 해먹는 중 ㅋㅋ<br>아랫배가 확실히 달라짐 fr fr</p>
+    </div>
+
+    <div class="cta-box">
+      <div class="cta-msg">다른 건 <span class="pop">설탕 덩어리</span>라<br>꼭 이걸로 해야 됨 진짜로</div>
+      <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=397.%20고구마%20대신%20이거" class="cta-link" target="_blank" rel="noopener noreferrer">
+        비밀재료 직행 →
+      </a>
+    </div>
+
+    <div class="share-box">
+      <h3>퍼가 퍼가</h3>
+      <p class="desc">이건 진짜 알려줘야 하는 레시피</p>
+      <div class="share-btns">
+        <button type="button" class="sbtn kakao" onclick="shareKakao()">💬 카톡</button>
+        <button type="button" class="sbtn native" onclick="shareNative()">📤 공유</button>
+        <button type="button" class="sbtn copy" onclick="copyLink()">🔗 복사</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const shareData = {
+      title: '아보카도 샐러드 레시피',
+      text: '3분 컷 사기 레시피 ㅋㅋ 진짜 매일 해먹는 중',
+      url: window.location.href
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => showToast('링크 복사 완료 !')).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('링크 복사 완료 !'); }
+      catch (e) { showToast('복사 실패 ㅠ 직접 복사해주세요'); }
+      document.body.removeChild(ta);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch (e) {}
+      } else {
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+        showToast('링크 복사됨 ! 카톡에 붙여넣기 ㄱ');
+      }
+    }
+  </script>
+</body>
+</html>
