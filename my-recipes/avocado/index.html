@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>아보카도 샐러드</title>
+<title>아보카도 샐러드 레시피</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -129,9 +129,7 @@
     font-size: 15px;
     padding: 14px;
     border-radius: 12px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
+    font-family: inherit;
   }
   .ing-secret:hover { transform: scale(1.02); }
 
@@ -197,7 +195,7 @@
     line-height: 1.3;
   }
   .cta-msg .pop { color: #ff9a6c; }
-  .cta-link {
+  .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -207,10 +205,12 @@
     border-radius: 999px;
     font-size: 14.5px;
     font-weight: 700;
-    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     transition: transform 0.15s;
   }
-  .cta-link:hover { transform: translateY(-1px); }
+  .cta-btn:hover { transform: translateY(-1px); }
 
   .share-box {
     background: var(--card);
@@ -249,7 +249,6 @@
     align-items: center;
     gap: 5px;
     border: 1.5px solid;
-    text-decoration: none;
   }
   .sbtn:hover { transform: translateY(-1px); }
   .sbtn.kakao { background: #fee500; color: #3a1d1d; border-color: #f0d800; }
@@ -276,6 +275,131 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 340px;
+    width: 100%;
+    padding: 28px 22px 22px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon { font-size: 36px; margin-bottom: 6px; }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .modal-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .modal-keyword {
+    background: var(--secret-soft);
+    border: 1.5px dashed #ffc9a0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-keyword-label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .modal-keyword-value {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24px;
+    color: var(--ink);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .how-to {
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  .how-to-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .how-num {
+    background: var(--accent);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--secret);
+    color: #fff;
+    padding: 13px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+  body.modal-open { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -284,9 +408,9 @@
     <p class="legal">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
 
     <header class="header">
-      <span class="tag">3-MINUTE RECIPE</span>
-      <h1>hell yeah 아보카도 샐러드</h1>
-      <p class="sub">칼 들고 3분이면 끝나는 사기 레시피</p>
+      <span class="tag">SIMPLE RECIPE</span>
+      <h1>🥗 아보카도 샐러드</h1>
+      <p class="sub">간단한데 든든하고 매일 먹고 싶은 한 그릇</p>
     </header>
 
     <div class="hero">
@@ -294,42 +418,41 @@
     </div>
 
     <div class="card">
-      <div class="card-head"><span class="ic">+</span> 넣을 것들</div>
+      <div class="card-head"><span class="ic">🛒</span> 재료</div>
       <div class="ing-grid">
         <div class="ing-chip"><span class="emoji">🥑</span>아보카도 1개</div>
         <div class="ing-chip"><span class="emoji">🧈</span>연두부 1개</div>
-        <div class="ing-chip"><span class="emoji">🌾</span>통깨 왕창</div>
-        <div class="ing-chip"><span class="emoji">🫗</span>들기름 or 참기름</div>
-        <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=397.%20고구마%20대신%20이거" class="ing-secret" target="_blank" rel="noopener noreferrer">
-          🔥 감칠맛 폭발하는 비밀재료 보기 →
-        </a>
+        <div class="ing-chip"><span class="emoji">🌾</span>통깨 가득</div>
+        <div class="ing-chip"><span class="emoji">🫗</span>들기름(참기름 OK)</div>
+        <button type="button" class="ing-secret" onclick="openModal()">
+          ✨ 비밀재료 (감칠맛 UP) 확인하기 →
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-head"><span class="ic">></span> 그래서 어떻게 하냐면</div>
+      <div class="card-head"><span class="ic">👩‍🍳</span> 만드는 법</div>
       <ol class="steps">
-        <li><strong>아보카도</strong> 반 갈라서 한 입 크기로 썰고</li>
-        <li><strong>연두부</strong>도 슥슥 잘라서 같이 담고</li>
-        <li><strong>비밀재료</strong> + 들기름 넉넉히 둘러주고</li>
-        <li><strong>통깨</strong> 미친듯이 뿌리면 그냥 완성임</li>
+        <li>재료를 <strong>한 입 크기</strong>로 먹기 좋게 썰어주세요</li>
+        <li><strong>비밀재료</strong>와 들기름을 넉넉히 둘러주세요</li>
+        <li><strong>통깨</strong>를 가득 뿌려주시면 완성이에요 ♩</li>
       </ol>
     </div>
 
     <div class="card vibe-card">
-      <p>솔직히 이게 되나 싶었는데<br>한 번 먹고 매일 해먹는 중 ㅋㅋ<br>아랫배가 확실히 달라짐 fr fr</p>
+      <p>진짜 간단한데 든든하고<br>무엇보다 화장실 매일 가니까<br>아랫배가 쏙 들어갔어요 ♡</p>
     </div>
 
     <div class="cta-box">
-      <div class="cta-msg">다른 건 <span class="pop">설탕 덩어리</span>라<br>꼭 이걸로 해야 됨 진짜로</div>
-      <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=397.%20고구마%20대신%20이거" class="cta-link" target="_blank" rel="noopener noreferrer">
-        비밀재료 직행 →
-      </a>
+      <div class="cta-msg">다른 건 <span class="pop">설탕 덩어리</span>라<br>꼭 이걸로 해주세요 ☺</div>
+      <button type="button" class="cta-btn" onclick="openModal()">
+        비밀재료 확인하기 →
+      </button>
     </div>
 
     <div class="share-box">
-      <h3>퍼가 퍼가</h3>
-      <p class="desc">이건 진짜 알려줘야 하는 레시피</p>
+      <h3>🥗 이 레시피 공유하기</h3>
+      <p class="desc">주변 분들에게도 알려주세요!</p>
       <div class="share-btns">
         <button type="button" class="sbtn kakao" onclick="shareKakao()">💬 카톡</button>
         <button type="button" class="sbtn native" onclick="shareNative()">📤 공유</button>
@@ -341,10 +464,90 @@
 
   <div class="toast" id="toast"></div>
 
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon">🥑</div>
+      <div class="modal-title">비밀재료는 여기!</div>
+      <p class="modal-text">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇</p>
+
+      <div class="modal-keyword">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">유로푸드</div>
+      </div>
+
+      <div class="how-to">
+        <div class="how-to-step">
+          <span class="how-num">1</span>
+          <span>아래 버튼 누르면 쿠팡으로 이동돼요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">2</span>
+          <span>키워드는 <strong>자동으로 복사</strong>돼있어요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">3</span>
+          <span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span>
+        </div>
+      </div>
+
+      <a href="https://influencers.coupang.com/s/dkanrjsk"
+         class="modal-cta"
+         id="goCoupangBtn"
+         target="_blank"
+         rel="noopener noreferrer">
+        키워드 복사하고 쿠팡 가기 →
+      </a>
+      <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
+    </div>
+  </div>
+
   <script>
+    const SEARCH_KEYWORD = '유로푸드';
+    const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+
+    function openModal() {
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      copyKeyword(SEARCH_KEYWORD);
+      setTimeout(() => closeModal(), 100);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(() => {
+          showToast('"' + keyword + '" 복사 완료! 쿠팡에서 붙여넣기 하세요');
+        }).catch(() => fallbackCopyKeyword(keyword));
+      } else {
+        fallbackCopyKeyword(keyword);
+      }
+    }
+
+    function fallbackCopyKeyword(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('"' + text + '" 복사 완료! 쿠팡에서 붙여넣기 하세요');
+      } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
     const shareData = {
       title: '아보카도 샐러드 레시피',
-      text: '3분 컷 사기 레시피 ㅋㅋ 진짜 매일 해먹는 중',
+      text: '간단한데 든든한 아보카도 샐러드 레시피 공유해요!',
       url: window.location.href
     };
 
@@ -358,7 +561,7 @@
     function copyLink() {
       const url = window.location.href;
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(url).then(() => showToast('링크 복사 완료 !')).catch(() => fallbackCopy(url));
+        navigator.clipboard.writeText(url).then(() => showToast('🔗 링크가 복사됐어요!')).catch(() => fallbackCopy(url));
       } else {
         fallbackCopy(url);
       }
@@ -371,8 +574,8 @@
       ta.style.left = '-9999px';
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); showToast('링크 복사 완료 !'); }
-      catch (e) { showToast('복사 실패 ㅠ 직접 복사해주세요'); }
+      try { document.execCommand('copy'); showToast('🔗 링크가 복사됐어요!'); }
+      catch (e) { showToast('복사에 실패했어요. 직접 복사해주세요'); }
       document.body.removeChild(ta);
     }
 
@@ -389,7 +592,7 @@
         shareNative();
       } else {
         copyLink();
-        showToast('링크 복사됨 ! 카톡에 붙여넣기 ㄱ');
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
       }
     }
   </script>
