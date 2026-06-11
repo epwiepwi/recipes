@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>팽이버섯 치킨 레시피</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf6f0;
+    --card: #ffffff;
+    --ink: #2b2320;
+    --ink-soft: #6e5e54;
+    --ink-light: #a09488;
+    --accent: #d4813b;
+    --accent-soft: #fdf0e4;
+    --secret: #d44a2e;
+    --secret-soft: #fff0eb;
+    --line: #ede4db;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .legal {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .hero {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 14px 0 16px;
+    box-shadow: 0 6px 24px rgba(80, 50, 30, 0.12);
+    aspect-ratio: 16 / 9;
+    background: #ede0d4;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card-head .ic { font-size: 17px; }
+
+  .ing-list {
+    list-style: none;
+  }
+  .ing-list li {
+    padding: 8px 0;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .ing-list li:last-child { border-bottom: none; }
+  .ing-list li::before {
+    content: "·";
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .ing-list .amount {
+    margin-left: auto;
+    color: var(--ink-soft);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .ing-secret {
+    background: var(--secret);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.15s;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: inherit;
+    width: 100%;
+    margin-top: 8px;
+  }
+  .ing-secret:hover { transform: scale(1.02); }
+
+  .batter-card {
+    background: var(--accent-soft);
+    border: 1px solid #f0d8b8;
+  }
+  .batter-list {
+    list-style: none;
+  }
+  .batter-list li {
+    padding: 6px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px dashed #e8d4c2;
+  }
+  .batter-list li:last-child { border-bottom: none; }
+  .batter-list li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .batter-list .amount {
+    margin-left: auto;
+    color: var(--ink-soft);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+  }
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14.5px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    background: var(--accent);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .steps strong {
+    background: linear-gradient(transparent 55%, #fde0b0 55%);
+    padding: 0 2px;
+  }
+
+  .tip-card {
+    background: #fff8f0;
+    border: 1px solid #f0d8b8;
+    text-align: center;
+  }
+  .tip-card p {
+    font-size: 14px;
+    color: #8b5a2b;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  .cta-box {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin: 14px 0 10px;
+    text-align: center;
+  }
+  .cta-msg {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .cta-msg .pop { color: #ffa96b; }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--secret);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.15s;
+  }
+  .cta-btn:hover { transform: translateY(-1px); }
+
+  .share-box {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-box h3 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .share-box .desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .sbtn {
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1.5px solid;
+  }
+  .sbtn:hover { transform: translateY(-1px); }
+  .sbtn.kakao { background: #fee500; color: #3a1d1d; border-color: #f0d800; }
+  .sbtn.native { background: var(--accent-soft); color: #8b5a2b; border-color: #f0d8b8; }
+  .sbtn.copy { background: #f3f3f0; color: var(--ink); border-color: #e0e0dc; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 340px;
+    width: 100%;
+    padding: 28px 22px 22px;
+    text-align: center;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f3f0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-icon { font-size: 36px; margin-bottom: 6px; }
+  .modal-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .modal-text {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .modal-keyword {
+    background: var(--secret-soft);
+    border: 1.5px dashed #ffc9a0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .modal-keyword-label {
+    font-size: 11px;
+    color: var(--secret);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .modal-keyword-value {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24px;
+    color: var(--ink);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .how-to {
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  .how-to-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .how-num {
+    background: var(--accent);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .modal-cta {
+    display: block;
+    width: 100%;
+    background: var(--secret);
+    color: #fff;
+    padding: 13px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .modal-subtext {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="legal">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <span class="tag">AIR FRYER RECIPE</span>
+      <h1>🍗 팽이버섯 치킨</h1>
+      <p class="sub">기름 없이 바삭하게, 에어프라이어 하나면 끝</p>
+    </header>
+
+    <div class="hero">
+      <img src="https://i.ibb.co/NdpFK2RZ/image.png" alt="팽이버섯 치킨" />
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="ic">🍄</span> 재료</div>
+      <ul class="ing-list">
+        <li><span>팽이버섯</span><span class="amount">2봉</span></li>
+      </ul>
+      <button type="button" class="ing-secret" onclick="openModal()">
+        ⭐ 버섯치킨 비밀재료 확인하기 →
+      </button>
+    </div>
+
+    <div class="card batter-card">
+      <div class="card-head"><span class="ic">🥣</span> 반죽</div>
+      <ul class="batter-list">
+        <li><span>밀가루</span><span class="amount">1컵</span></li>
+        <li><span>마늘가루</span><span class="amount">1작은술</span></li>
+        <li><span>양파가루</span><span class="amount">1작은술</span></li>
+        <li><span>파프리카가루</span><span class="amount">1작은술</span></li>
+        <li><span>소금</span><span class="amount">1작은술</span></li>
+        <li><span>후추</span><span class="amount">약간</span></li>
+        <li><span>옥수수전분</span><span class="amount">3큰술</span></li>
+        <li><span style="color:var(--secret);font-weight:700">⭐ 비밀재료</span><span class="amount" style="color:var(--secret);font-weight:700">1컵</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="ic">👩‍🍳</span> 만드는 법</div>
+      <ol class="steps">
+        <li>팽이버섯 <strong>밑동을 잘라</strong>주시고 너무 잘게 말고 <strong>큼직하게</strong> 찢어주세요</li>
+        <li>반죽 재료를 모두 넣고 <strong>골고루 섞어</strong>주세요</li>
+        <li>팽이버섯에 반죽을 <strong>얇게</strong> 입혀주세요</li>
+        <li>에어프라이어 <strong>190도에서 10~15분</strong> 구워주세요</li>
+        <li>중간에 <strong>한 번 뒤집어</strong>주시고, 마지막 2분은 <strong>200도</strong>로 마무리하면 더 바삭해요</li>
+      </ol>
+    </div>
+
+    <div class="card tip-card">
+      <p>반죽을 너무 두껍게 입히면 눅눅해질 수 있어요<br>얇게 입혀야 바삭한 식감이 살아나요 ♩</p>
+    </div>
+
+    <div class="cta-box">
+      <div class="cta-msg"><span class="pop">비밀재료</span> 하나로<br>바삭함이 완전 달라져요</div>
+      <button type="button" class="cta-btn" onclick="openModal()">
+        비밀재료 확인하기 →
+      </button>
+    </div>
+
+    <div class="share-box">
+      <h3>🍗 이 레시피 공유하기</h3>
+      <p class="desc">주변 분들에게도 알려주세요!</p>
+      <div class="share-btns">
+        <button type="button" class="sbtn kakao" onclick="shareKakao()">💬 카톡</button>
+        <button type="button" class="sbtn native" onclick="shareNative()">📤 공유</button>
+        <button type="button" class="sbtn copy" onclick="copyLink()">🔗 복사</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="secretModal" onclick="if(event.target.id==='secretModal') closeModal()">
+    <div class="modal">
+      <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon">🍗</div>
+      <div class="modal-title">비밀재료는 여기!</div>
+      <p class="modal-text">아래 키워드로 쿠팡에서<br>검색하시면 바로 나와요 👇</p>
+
+      <div class="modal-keyword">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">팽이버섯치킨</div>
+      </div>
+
+      <div class="how-to">
+        <div class="how-to-step">
+          <span class="how-num">1</span>
+          <span>아래 버튼 누르면 쿠팡스토어로 이동돼요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">2</span>
+          <span>키워드는 <strong>자동으로 복사</strong>돼있어요</span>
+        </div>
+        <div class="how-to-step">
+          <span class="how-num">3</span>
+          <span>쿠팡 검색창에 <strong>붙여넣기</strong>만 하면 끝!</span>
+        </div>
+      </div>
+
+      <a href="https://influencers.coupang.com/s/dkanrjsk"
+         class="modal-cta"
+         id="goCoupangBtn"
+         target="_blank"
+         rel="noopener noreferrer">
+        키워드 복사하고 쿠팡 가기 →
+      </a>
+      <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
+    </div>
+  </div>
+
+  <script>
+    const SEARCH_KEYWORD = '팽이버섯치킨';
+    const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
+
+    function openModal() {
+      document.getElementById('secretModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('secretModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('goCoupangBtn').addEventListener('click', function() {
+      copyKeyword(SEARCH_KEYWORD);
+      setTimeout(() => closeModal(), 100);
+    });
+
+    function copyKeyword(keyword) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(keyword).then(() => {
+          showToast('"' + keyword + '" 복사 완료! 쿠팡에서 붙여넣기 하세요');
+        }).catch(() => fallbackCopyKeyword(keyword));
+      } else {
+        fallbackCopyKeyword(keyword);
+      }
+    }
+
+    function fallbackCopyKeyword(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('"' + text + '" 복사 완료! 쿠팡에서 붙여넣기 하세요');
+      } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    const shareData = {
+      title: '팽이버섯 치킨 레시피',
+      text: '에어프라이어로 바삭하게! 팽이버섯 치킨 레시피 공유해요',
+      url: window.location.href
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => showToast('🔗 링크가 복사됐어요!')).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('🔗 링크가 복사됐어요!'); }
+      catch (e) { showToast('복사에 실패했어요. 직접 복사해주세요'); }
+      document.body.removeChild(ta);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch (e) {}
+      } else {
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+      }
+    }
+  </script>
+</body>
+</html>
