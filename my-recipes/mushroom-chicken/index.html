@@ -6,7 +6,7 @@
 <title>팽이버섯 치킨 레시피</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <style>
   :root {
     --bg: #fdf6f0;
@@ -22,7 +22,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     background: var(--bg);
     color: var(--ink);
     line-height: 1.6;
@@ -57,7 +57,7 @@
     margin-bottom: 8px;
   }
   h1 {
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
@@ -226,7 +226,7 @@
     text-align: center;
   }
   .cta-msg {
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 14px;
@@ -259,7 +259,7 @@
     text-align: center;
   }
   .share-box h3 {
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 4px;
@@ -361,7 +361,7 @@
   }
   .modal-icon { font-size: 36px; margin-bottom: 6px; }
   .modal-title {
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 4px;
@@ -387,7 +387,7 @@
     margin-bottom: 4px;
   }
   .modal-keyword-value {
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     font-size: 24px;
     color: var(--ink);
     line-height: 1.3;
@@ -460,9 +460,6 @@
       <ul class="ing-list">
         <li><span>팽이버섯</span><span class="amount">2봉</span></li>
       </ul>
-      <button type="button" class="ing-secret" onclick="openModal()">
-        ⭐ 버섯치킨 비밀재료 확인하기 →
-      </button>
     </div>
 
     <div class="card batter-card">
@@ -477,16 +474,19 @@
         <li><span>옥수수전분</span><span class="amount">3큰술</span></li>
         <li><span style="color:var(--secret);font-weight:700">⭐ 비밀재료</span><span class="amount" style="color:var(--secret);font-weight:700">1컵</span></li>
       </ul>
+      <button type="button" class="ing-secret" onclick="openModal()">
+        ⭐ 비밀재료 확인하기 →
+      </button>
     </div>
 
     <div class="card">
       <div class="card-head"><span class="ic">👩‍🍳</span> 만드는 법</div>
       <ol class="steps">
-        <li>팽이버섯 <strong>밑동을 잘라</strong>주시고 너무 잘게 말고 <strong>큼직하게</strong> 찢어주세요</li>
-        <li>반죽 재료를 모두 넣고 <strong>골고루 섞어</strong>주세요</li>
-        <li>팽이버섯에 반죽을 <strong>얇게</strong> 입혀주세요</li>
-        <li>에어프라이어 <strong>190도에서 10~15분</strong> 구워주세요</li>
-        <li>중간에 <strong>한 번 뒤집어</strong>주시고, 마지막 2분은 <strong>200도</strong>로 마무리하면 더 바삭해요</li>
+        <li>팽이버섯 밑동 잘라주세요<br>너무 잘게 말고 <strong>큼직하게</strong> 찢어주세요</li>
+        <li>반죽 재료 모두 넣고<br><strong>골고루 섞어</strong>주세요</li>
+        <li>팽이버섯에 반죽을<br><strong>얇게</strong> 입혀주세요</li>
+        <li>에어프라이어<br><strong>190도</strong>에서 <strong>10~15분</strong> 구워주세요</li>
+        <li>중간에 <strong>한 번 뒤집어</strong>주세요<br>마지막 2분은 <strong>200도</strong>로 마무리하면 더 바삭해요</li>
       </ol>
     </div>
 
@@ -524,7 +524,7 @@
 
       <div class="modal-keyword">
         <div class="modal-keyword-label">🔍 검색 키워드</div>
-        <div class="modal-keyword-value">팽이버섯치킨</div>
+        <div class="modal-keyword-value">버섯</div>
       </div>
 
       <div class="how-to">
@@ -554,7 +554,7 @@
   </div>
 
   <script>
-    const SEARCH_KEYWORD = '팽이버섯치킨';
+    const SEARCH_KEYWORD = '버섯';
     const COUPANG_BASE_URL = 'https://influencers.coupang.com/s/dkanrjsk';
 
     function openModal() {
