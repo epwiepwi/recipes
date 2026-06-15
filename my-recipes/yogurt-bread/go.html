@@ -10,15 +10,15 @@
 <style>
   :root {
     --bg: #000000;
-    --card: #ffffff;
-    --ink: #2b2a26;
-    --ink-soft: #6b6a65;
-    --ink-light: #999791;
+    --card: #1a1a1a;
+    --ink: #f5f5f5;
+    --ink-soft: #a0a0a0;
+    --ink-light: #666666;
     --accent: #c4935a;
-    --accent-soft: #fdf3e4;
+    --accent-soft: rgba(196, 147, 90, 0.12);
     --secret: #e8a84c;
-    --secret-soft: #fff8eb;
-    --line: #ececea;
+    --secret-soft: rgba(232, 168, 76, 0.12);
+    --line: #2a2a2a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
   body {
@@ -41,7 +41,8 @@
     max-width: 380px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 8px 40px rgba(160, 120, 60, 0.12);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid #2a2a2a;
     animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   @keyframes modalIn {
@@ -64,7 +65,7 @@
   }
   .modal-keyword {
     background: var(--secret-soft);
-    border: 1.5px dashed #f0d090;
+    border: 1.5px dashed rgba(232, 168, 76, 0.3);
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
@@ -110,8 +111,8 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: var(--ink);
-    color: #fff;
+    background: #f5f5f5;
+    color: #1a1a1a;
     padding: 12px 20px;
     border-radius: 999px;
     font-size: 13px;
