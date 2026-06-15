@@ -8,23 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #000000;
-    --card: #1a1a1a;
-    --ink: #f5f5f5;
-    --ink-soft: #a0a0a0;
-    --ink-light: #666666;
-    --accent: #c4935a;
-    --accent-soft: rgba(196, 147, 90, 0.12);
-    --secret: #e8a84c;
-    --secret-soft: rgba(232, 168, 76, 0.12);
-    --line: #2a2a2a;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
+    background: #ffffff;
+    color: #262626;
     line-height: 1.55;
     letter-spacing: -0.01em;
     min-height: 100dvh;
@@ -35,14 +23,13 @@
   }
 
   .modal {
-    background: var(--card);
-    border-radius: 20px;
+    background: #ffffff;
+    border-radius: 16px;
     padding: 28px 22px 22px;
     max-width: 380px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-    border: 1px solid #2a2a2a;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 24px rgba(0, 0, 0, 0.06);
     animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   @keyframes modalIn {
@@ -55,24 +42,25 @@
     font-family: 'Gaegu', sans-serif;
     font-size: 22px;
     font-weight: 700;
+    color: #262626;
     margin-bottom: 10px;
   }
   .modal-desc {
     font-size: 13.5px;
-    color: var(--ink-soft);
+    color: #8e8e8e;
     margin-bottom: 16px;
     line-height: 1.6;
   }
   .modal-keyword {
-    background: var(--secret-soft);
-    border: 1.5px dashed rgba(232, 168, 76, 0.3);
+    background: #fafafa;
+    border: 1.5px dashed #dbdbdb;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
   }
   .modal-keyword-label {
     font-size: 11px;
-    color: var(--secret);
+    color: #0095f6;
     font-weight: 700;
     letter-spacing: 0.06em;
     margin-bottom: 4px;
@@ -80,29 +68,29 @@
   .modal-keyword-value {
     font-family: 'Gaegu', sans-serif;
     font-size: 24px;
-    color: var(--ink);
+    color: #262626;
     line-height: 1.3;
     font-weight: 700;
   }
   .modal-cta {
     display: block;
     width: 100%;
-    background: var(--secret);
+    background: #0095f6;
     color: #fff;
     padding: 13px;
-    border-radius: 12px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 700;
     font-size: 15px;
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: transform 0.15s;
+    transition: background 0.15s;
   }
-  .modal-cta:hover { transform: translateY(-1px); }
+  .modal-cta:hover { background: #1aa1f7; }
   .modal-subtext {
     font-size: 10.5px;
-    color: var(--ink-light);
+    color: #c7c7c7;
     margin-top: 6px;
   }
 
@@ -111,8 +99,8 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: #f5f5f5;
-    color: #1a1a1a;
+    background: #262626;
+    color: #fff;
     padding: 12px 20px;
     border-radius: 999px;
     font-size: 13px;
