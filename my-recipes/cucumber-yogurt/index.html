@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정재형 오이요거트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4faf5;
+    --card: #ffffff;
+    --ink: #2b2a26;
+    --ink-soft: #6b6a65;
+    --ink-light: #999791;
+    --accent: #4a9e6b;
+    --accent-soft: #e4f5ea;
+    --secret: #ff8c42;
+    --secret-soft: #fff3e8;
+    --line: #e2ece5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+  }
+
+  .footer-top {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+    padding: 4px 0;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  h1 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .card-title .icon { font-size: 16px; }
+
+  .prep-card { padding: 18px; }
+  .prep-section {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .prep-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .prep-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .prep-items {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .prep-secret {
+    display: inline;
+    background: var(--secret-soft);
+    color: var(--secret);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .step-list {
+    list-style: none;
+  }
+  .step-list li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step-list li:last-child { margin-bottom: 0; }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .step-content {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .step-content strong {
+    background: linear-gradient(transparent 55%, #d0f0d8 55%);
+    padding: 0 3px;
+    font-weight: 700;
+  }
+  .step-tip {
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .comment-card {
+    background: #e4f5ea;
+    border: 1px solid #c0e0ca;
+    text-align: center;
+  }
+  .comment-card p {
+    font-size: 14px;
+    color: #3a7a4a;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .cta-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 20px 18px;
+    margin: 14px 0 10px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .cta-title .accent { color: #7ddb95; }
+  .cta-btn {
+    background: var(--secret);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .cta-btn:hover { transform: translateY(-1px); }
+
+  .share-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .share-title {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .share-desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .share-btn {
+    background: var(--accent-soft);
+    color: #3a7a4a;
+    border: 1.5px solid #c0e0ca;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .share-btn:hover {
+    transform: translateY(-1px);
+    background: #d0f0d8;
+  }
+  .share-btn.kakao {
+    background: #fee500;
+    color: #3a1d1d;
+    border-color: #f0d800;
+  }
+  .share-btn.kakao:hover { background: #ffe900; }
+  .share-btn.copy {
+    background: #f3f3f0;
+    color: var(--ink);
+    border-color: #e0e0dc;
+  }
+  .share-btn.copy:hover { background: #ebebe6; }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 18px;
+    line-height: 1.7;
+  }
+  .footer-note strong { color: var(--ink-soft); }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 2000;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="footer-top">쿠팡 파트너스 활동의 일환으로 일정 수수료를 제공받습니다</p>
+
+    <header class="header">
+      <div class="eyebrow">RECIPE</div>
+      <h1>🥒 오이요거트</h1>
+      <p class="subtitle">시원하고 중독성 있는 여름 조합 💚</p>
+    </header>
+
+    <div class="card prep-card">
+      <div class="card-title"><span class="icon">🛒</span> 준비물</div>
+
+      <div class="prep-section">
+        <div class="prep-label">메인 재료</div>
+        <div class="prep-items">
+          오이 1개 · 플레인 요거트 3큰술 · 후추 · 알룰로스 1스푼
+        </div>
+      </div>
+
+      <div class="prep-section">
+        <div class="prep-label">비밀소스</div>
+        <div class="prep-items">
+          <a href="https://link.coupang.com/a/eBgcGDxtHF" class="prep-secret" target="_blank" rel="noopener noreferrer">✨ 비밀소스 확인하기 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">👩🏻‍🍳</span> 만드는 법</div>
+      <ul class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <div class="step-content">
+            오이 1개를 <strong>얇게 슬라이스</strong>해주세요 🥒
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div class="step-content">
+            소금 한 꼬집 뿌려서<br>
+            <strong>5~10분 정도 절여</strong>주세요
+            <div class="step-tip">💡 이 과정을 해줘야 물이 덜 생기고 식감도 더 좋아요</div>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div class="step-content">
+            절인 오이는 <strong>물기를 꼭 짜서</strong> 준비해주세요
+          </div>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <div class="step-content">
+            플레인 요거트 3큰술 · 후추 톡톡<br>
+            알룰로스 1스푼 · <strong>비밀소스 살짝</strong><br>
+            섞어서 소스를 만들어주세요 ✨
+          </div>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <div class="step-content">
+            오이에 소스 넣고<br>
+            <strong>살살 버무려</strong>주시면 완성이에요 🤍
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card comment-card">
+      <p>여름마다 자꾸 찾게 되는<br>시원하고 중독성 있는 조합이에요 💚</p>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-title">이 <span class="accent">비밀소스</span> 하나면<br>오이요거트가 달라져요 🤍</div>
+      <a href="https://link.coupang.com/a/eBgcGDxtHF" class="cta-btn" target="_blank" rel="noopener noreferrer">
+        비밀소스 확인하기 →
+      </a>
+    </div>
+
+    <div class="share-card">
+      <div class="share-title">🥒 이 레시피 공유하기</div>
+      <p class="share-desc">친구들에게도 알려주세요!</p>
+      <div class="share-buttons">
+        <button type="button" class="share-btn kakao" onclick="shareKakao()">
+          💬 카톡
+        </button>
+        <button type="button" class="share-btn" onclick="shareNative()">
+          📤 공유
+        </button>
+        <button type="button" class="share-btn copy" onclick="copyLink()">
+          🔗 링크복사
+        </button>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      💌 인스타 DM으로 바로 안내가 어려워<br>
+      <strong>중간 페이지를 만들었어요</strong>
+    </p>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    const shareData = {
+      title: '🥒 오이요거트 레시피',
+      text: '시원하고 중독성 있는 오이요거트!',
+      url: window.location.href
+    };
+
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('🔗 링크가 복사됐어요!');
+        }).catch(() => fallbackCopy(url));
+      } else {
+        fallbackCopy(url);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try { document.execCommand('copy'); showToast('🔗 링크가 복사됐어요!'); } catch (e) {}
+      document.body.removeChild(textArea);
+    }
+
+    async function shareNative() {
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch (e) {}
+      } else {
+        copyLink();
+      }
+    }
+
+    function shareKakao() {
+      if (navigator.share && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        shareNative();
+      } else {
+        copyLink();
+        showToast('🔗 링크 복사됨! 카톡에 붙여넣기 해주세요');
+      }
+    }
+  </script>
+
+</body>
+</html>
