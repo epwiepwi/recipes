@@ -508,19 +508,25 @@
         <div class="modal-keyword-value">곰곰</div>
       </div>
 
-      <a href="https://influencers.coupang.com/s/dkanrjsk#:~:text=%EA%B3%B0%EA%B3%B0"
-         class="modal-cta"
-         id="goCoupangBtn"
-         target="_blank"
-         rel="noopener noreferrer">
+      <button type="button" class="modal-cta" id="goCoupangBtn1">
         키워드 복사하고 바로가기 →
-      </a>
+      </button>
+
+      <div class="modal-keyword" style="margin-top: 8px;">
+        <div class="modal-keyword-label">🔍 검색 키워드</div>
+        <div class="modal-keyword-value">리가</div>
+      </div>
+
+      <button type="button" class="modal-cta" id="goCoupangBtn2" style="background: var(--ink);">
+        이걸로하면 고소함이 2배 →
+      </button>
+
       <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
     </div>
   </div>
 
   <script>
-    const SEARCH_KEYWORD = '곰곰';
+    const COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
 
     function openModal() {
       document.getElementById('secretModal').classList.add('active');
@@ -532,14 +538,24 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    document.getElementById('goCoupangBtn').addEventListener('click', function() {
-      const btn = this;
-      btn.textContent = '이동 중...';
+    document.getElementById('goCoupangBtn1').addEventListener('click', function() {
+      goWithKeyword(this, '곰곰');
+    });
+
+    document.getElementById('goCoupangBtn2').addEventListener('click', function() {
+      goWithKeyword(this, '리가');
+    });
+
+    function goWithKeyword(btn, keyword) {
+      copyKeyword(keyword);
+      btn.textContent = '복사 완료! 이동 중...';
       btn.style.opacity = '0.7';
       btn.style.pointerEvents = 'none';
-      copyKeyword(SEARCH_KEYWORD);
-      setTimeout(() => closeModal(), 100);
-    });
+      const encoded = encodeURIComponent(keyword);
+      setTimeout(() => {
+        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
+      }, 800);
+    }
 
     function copyKeyword(keyword) {
       if (navigator.clipboard) {
