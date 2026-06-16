@@ -344,6 +344,19 @@
     line-height: 1.3;
     font-weight: 700;
   }
+  .modal-set {
+    background: #fafafa;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  .modal-set .modal-keyword {
+    margin-bottom: 10px;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+  }
   .modal-cta {
     display: block;
     width: 100%;
@@ -357,6 +370,9 @@
     border: none;
     cursor: pointer;
     font-family: inherit;
+  }
+  .modal-cta.secondary {
+    background: var(--ink);
   }
   .modal-subtext {
     font-size: 10.5px;
@@ -503,23 +519,25 @@
         검색창에 <strong>붙여넣기</strong>만 하면 끝! 👇
       </p>
 
-      <div class="modal-keyword">
-        <div class="modal-keyword-label">🔍 검색 키워드</div>
-        <div class="modal-keyword-value">곰곰</div>
+      <div class="modal-set">
+        <div class="modal-keyword">
+          <div class="modal-keyword-label">🔍 검색 키워드</div>
+          <div class="modal-keyword-value">곰곰</div>
+        </div>
+        <button type="button" class="modal-cta" id="goCoupangBtn1">
+          이걸로하면 폭신함이 2배 →
+        </button>
       </div>
 
-      <button type="button" class="modal-cta" id="goCoupangBtn1">
-        키워드 복사하고 바로가기 →
-      </button>
-
-      <div class="modal-keyword" style="margin-top: 8px;">
-        <div class="modal-keyword-label">🔍 검색 키워드</div>
-        <div class="modal-keyword-value">리가</div>
+      <div class="modal-set">
+        <div class="modal-keyword">
+          <div class="modal-keyword-label">🔍 검색 키워드</div>
+          <div class="modal-keyword-value">리가</div>
+        </div>
+        <button type="button" class="modal-cta secondary" id="goCoupangBtn2">
+          이걸로하면 고소함이 2배 →
+        </button>
       </div>
-
-      <button type="button" class="modal-cta" id="goCoupangBtn2" style="background: var(--ink);">
-        이걸로하면 고소함이 2배 →
-      </button>
 
       <p class="modal-subtext">쿠팡 파트너스 활동의 일환입니다</p>
     </div>
@@ -548,7 +566,7 @@
 
     function goWithKeyword(btn, keyword) {
       copyKeyword(keyword);
-      btn.textContent = '복사 완료! 이동 중...';
+      btn.textContent = '키워드 복사하고 이동 중...';
       btn.style.opacity = '0.7';
       btn.style.pointerEvents = 'none';
       const encoded = encodeURIComponent(keyword);
