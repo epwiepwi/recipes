@@ -562,8 +562,9 @@
       btn.textContent = '키워드 복사하고 이동 중...';
       btn.style.opacity = '0.7';
       btn.style.pointerEvents = 'none';
+      var encoded = encodeURIComponent(SEARCH_KEYWORD);
       setTimeout(function() {
-        window.location.href = COUPANG_URL;
+        window.location.href = COUPANG_URL + '#:~:text=' + encoded;
       }, 800);
     });
 
