@@ -136,7 +136,7 @@
 
     <div class="modal-set">
       <div class="modal-keyword-label">🧊 냉동 재료 한팩</div>
-      <div class="modal-keyword-value">여성</div>
+      <div class="modal-keyword-value">여성1</div>
       <button type="button" class="modal-cta" id="btn1">
         냉동이라 바로 갈기만 하면 끝 →
       </button>
@@ -146,7 +146,7 @@
 
     <div class="modal-set">
       <div class="modal-keyword-label">🥤 완제품</div>
-      <div class="modal-keyword-value">여성</div>
+      <div class="modal-keyword-value">여성2</div>
       <button type="button" class="modal-cta secondary" id="btn2">
         완제품 보러가기 →
       </button>
@@ -161,11 +161,11 @@
     var COUPANG_URL = 'https://influencers.coupang.com/s/dkanrjsk';
 
     document.getElementById('btn1').addEventListener('click', function() {
-      goWithKeyword(this, '여성', '여성');
+      goWithKeyword(this, '여성1', '여성1');
     });
 
     document.getElementById('btn2').addEventListener('click', function() {
-      goWithKeyword(this, '여성', '여성');
+      goWithKeyword(this, '여성2', '여성2');
     });
 
     function goWithKeyword(btn, searchKeyword, copyText) {
