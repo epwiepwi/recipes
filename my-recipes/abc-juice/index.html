@@ -197,6 +197,25 @@
     font-weight: 700;
   }
 
+  .top-cta-row {
+    display: flex;
+    gap: 8px;
+    margin: 0 16px 6px;
+  }
+  .top-cta {
+    flex: 1;
+    padding: 10px 6px;
+    border-radius: 10px;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #fff;
+  }
+  .top-cta-1 { background: linear-gradient(135deg, #ff6b6b, #e05535); }
+  .top-cta-2 { background: var(--ink); }
+
   .dual-cta {
     margin: 24px 16px 0;
     display: flex;
@@ -419,19 +438,9 @@
       <p>제가 매일 마시는 비율이에요<br>아침마다 한 잔이면 충분해요 🤍</p>
     </div>
 
-    <div class="dual-cta">
-      <div class="cta-card cta-card-1" onclick="openModal()">
-        <div class="cta-emoji">🧊</div>
-        <div class="cta-title">냉동이라 더 좋아요!</div>
-        <div class="cta-desc">삶고 자르고 귀찮잖아요<br>한팩이면 바로 갈기만 하면 끝!</div>
-        <button type="button" class="cta-btn">키트 보러가기 →</button>
-      </div>
-      <div class="cta-card cta-card-2" onclick="openModal()">
-        <div class="cta-emoji">🥤</div>
-        <div class="cta-title">만들기 귀찮으면 완제품도!</div>
-        <div class="cta-desc">바로 마실 수 있는<br>ABC쥬스 완제품 추천</div>
-        <button type="button" class="cta-btn">완제품 보러가기 →</button>
-      </div>
+    <div class="top-cta-row">
+      <button type="button" class="top-cta top-cta-1" onclick="openModal()">🧊 키트 보러가기</button>
+      <button type="button" class="top-cta top-cta-2" onclick="openModal()">🥤 완제품 보러가기</button>
     </div>
 
     <div class="section-label">🥤 2잔 기준 재료</div>
