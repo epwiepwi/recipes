@@ -539,7 +539,7 @@
 
       <div class="modal-set">
         <div class="modal-set-label">🧊 냉동 재료 한팩</div>
-        <div class="modal-set-value">abc쥬스 재료</div>
+        <div class="modal-set-value">여성</div>
         <button type="button" class="modal-cta" id="goCoupangBtn1">
           냉동이라 바로 갈기만 하면 끝 →
         </button>
@@ -549,7 +549,7 @@
 
       <div class="modal-set">
         <div class="modal-set-label">🥤 완제품</div>
-        <div class="modal-set-value">abc쥬스</div>
+        <div class="modal-set-value">여성</div>
         <button type="button" class="modal-cta secondary" id="goCoupangBtn2">
           완제품 보러가기 →
         </button>
@@ -573,11 +573,11 @@
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
     document.getElementById('goCoupangBtn1').addEventListener('click', function() {
-      goWithKeyword(this, 'abc쥬스 재료', 'abc쥬스 재료');
+      goWithKeyword(this, '여성', '여성');
     });
 
     document.getElementById('goCoupangBtn2').addEventListener('click', function() {
-      goWithKeyword(this, 'abc쥬스', 'abc쥬스');
+      goWithKeyword(this, '여성', '여성');
     });
 
     function goWithKeyword(btn, searchKeyword, copyText) {
