@@ -419,6 +419,21 @@
       <p>제가 매일 마시는 비율이에요<br>아침마다 한 잔이면 충분해요 🤍</p>
     </div>
 
+    <div class="dual-cta">
+      <div class="cta-card cta-card-1" onclick="openModal()">
+        <div class="cta-emoji">🧊</div>
+        <div class="cta-title">냉동이라 더 좋아요!</div>
+        <div class="cta-desc">삶고 자르고 귀찮잖아요<br>한팩이면 바로 갈기만 하면 끝!</div>
+        <button type="button" class="cta-btn">키트 보러가기 →</button>
+      </div>
+      <div class="cta-card cta-card-2" onclick="openModal()">
+        <div class="cta-emoji">🥤</div>
+        <div class="cta-title">만들기 귀찮으면 완제품도!</div>
+        <div class="cta-desc">바로 마실 수 있는<br>ABC쥬스 완제품 추천</div>
+        <button type="button" class="cta-btn">완제품 보러가기 →</button>
+      </div>
+    </div>
+
     <div class="section-label">🥤 2잔 기준 재료</div>
     <div class="grouped-list">
       <div class="list-item">
@@ -499,7 +514,7 @@
         <div class="cta-emoji">🧊</div>
         <div class="cta-title">냉동이라 더 좋아요!</div>
         <div class="cta-desc">삶고 자르고 귀찮잖아요<br>한팩이면 바로 갈기만 하면 끝!</div>
-        <button type="button" class="cta-btn">재료 세트 보러가기 →</button>
+        <button type="button" class="cta-btn">키트 보러가기 →</button>
       </div>
       <div class="cta-card cta-card-2" onclick="openModal()">
         <div class="cta-emoji">🥤</div>
@@ -539,7 +554,7 @@
 
       <div class="modal-set">
         <div class="modal-set-label">🧊 냉동 재료 한팩</div>
-        <div class="modal-set-value">abc쥬스 재료</div>
+        <div class="modal-set-value">여성1</div>
         <button type="button" class="modal-cta" id="goCoupangBtn1">
           냉동이라 바로 갈기만 하면 끝 →
         </button>
@@ -549,7 +564,7 @@
 
       <div class="modal-set">
         <div class="modal-set-label">🥤 완제품</div>
-        <div class="modal-set-value">abc쥬스</div>
+        <div class="modal-set-value">여성2</div>
         <button type="button" class="modal-cta secondary" id="goCoupangBtn2">
           완제품 보러가기 →
         </button>
@@ -573,11 +588,11 @@
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
     document.getElementById('goCoupangBtn1').addEventListener('click', function() {
-      goWithKeyword(this, 'abc쥬스 재료', 'abc쥬스 재료');
+      goWithKeyword(this, '여성1', '여성1');
     });
 
     document.getElementById('goCoupangBtn2').addEventListener('click', function() {
-      goWithKeyword(this, 'abc쥬스', 'abc쥬스');
+      goWithKeyword(this, '여성2', '여성2');
     });
 
     function goWithKeyword(btn, searchKeyword, copyText) {
