@@ -144,6 +144,41 @@
     color: var(--ink);
   }
 
+  .secret-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #fff8ee, #fff3e0);
+    border: 1.5px solid #f0c890;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .secret-banner:active { transform: scale(0.98); }
+  .secret-banner-icon { font-size: 22px; flex-shrink: 0; }
+  .secret-banner-text {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 700;
+    color: #c4913a;
+    line-height: 1.4;
+  }
+  .secret-banner-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: #c4913a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
   .tip-box {
     background: var(--card);
     margin: 10px 16px 0;
@@ -384,7 +419,13 @@
       </div>
       <div class="step-item">
         <span class="step-num">2</span>
-        <div class="step-text">구멍 난 박스에 <strong>널널하게 담아주세요</strong><br>너무 꽉 채우지 말고 여유 있게 담은 뒤<br><span class="list-item-secret" style="display:inline" onclick="openModal()"><span class="item-label">✨비법재료✨</span></span>는 직접 살짝 뿌려주시거나, 키친타월에 1숟갈 싸서 넣어주셔도 되고 종이컵에 담아 같이 넣어주셔도 괜찮아요 ✨</div>
+        <div class="step-text">구멍 난 박스에 <strong>널널하게 담아주세요</strong><br>너무 꽉 채우지 말고 여유 있게 담은 뒤
+          <div class="secret-banner" onclick="openModal()">
+            <span class="secret-banner-icon">✨</span>
+            <span class="secret-banner-text">비법재료 확인하기<br><span style="font-size:12px;font-weight:500;color:#b8860b">직접 뿌리거나 · 키친타월에 싸서 · 종이컵에 담아</span></span>
+            <span class="secret-banner-arrow">›</span>
+          </div>
+        </div>
       </div>
       <div class="step-item">
         <span class="step-num">3</span>
