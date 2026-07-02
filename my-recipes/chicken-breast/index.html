@@ -148,6 +148,12 @@
   .step-text {
     flex: 1;
   }
+  .secret-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
   .step-text strong {
     font-weight: 600;
     color: var(--ink);
@@ -423,7 +429,7 @@
       </div>
       <div class="step-item">
         <span class="step-num">4</span>
-        <div class="step-text">여기에 <strong>✨비법 재료✨</strong> 1큰술이랑 후추 넣고 버무려주세요</div>
+        <div class="step-text">여기에 <strong><a class="secret-link" onclick="openModal()">✨비법 재료✨</a></strong> 1큰술이랑 후추 넣고 버무려주세요</div>
       </div>
       <div class="step-item">
         <span class="step-num">5</span>
